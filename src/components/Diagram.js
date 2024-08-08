@@ -2,6 +2,6 @@ import React from 'react'
 
 export const Diagram = () => {
   return (
-    <div>Diagram</div>
+    <div className='diagram'>Diagram</div>
   )
 }

@@ -16,7 +16,11 @@ export const Panel = () => {
                 <h1>Settings</h1>
                 <h2>Set diagram params as you need</h2>
             </div>
-            <RangeSetting/>
+            <RangeSetting
+                title='Diagram radius'
+                min="10"
+                max="40"
+            />
             <RangeSetting/>
             <RangeSetting/>
         </div>

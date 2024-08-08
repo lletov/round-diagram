@@ -6,10 +6,15 @@ import { createContext, useContext, useState } from 'react';
 import { DiagramContext } from './components/Context.js';
 
 function App() {
+  const [diagramParams, setDiagramParams] = useState({
+    diagramRadius: 60,
+    groupRadius: 30,
+    pointRadius: 16
+  })
 
   return (
     <div className="app">
-      <DiagramContext.Provider value="test">
+      <DiagramContext.Provider value={diagramParams}>
         <Diagram/>
         <Panel/>
       </DiagramContext.Provider>

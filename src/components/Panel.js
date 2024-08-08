@@ -1,7 +1,12 @@
 import React from 'react'
+import { useContext } from 'react';
 import { RangeSetting } from './RangeSetting'
+import { DiagramContext } from './Context.js';
 
 export const Panel = () => {
+
+  const params = useContext(DiagramContext);
+
   return (
     <div className='panel'>
         <div className='panel-block'>
@@ -20,9 +25,21 @@ export const Panel = () => {
                 title='Diagram radius'
                 min="10"
                 max="40"
+                value={params.diagramRadius}
+                width={params.width}
             />
-            <RangeSetting/>
-            <RangeSetting/>
+            <RangeSetting
+                title='Group radius'
+                min="10"
+                max="40"
+                value={params.groupRadius}
+            />
+            <RangeSetting
+                title='Point radius'
+                min="10"
+                max="40"
+                value={params.pointRadius}
+            />
         </div>
         <div className='panel-block'>
             <div className='panel-block-header'>

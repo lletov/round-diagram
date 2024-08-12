@@ -1,11 +1,11 @@
 import React from 'react'
 import { useContext } from 'react';
 import { RangeSetting } from './RangeSetting'
-import { DiagramContext } from './Context.js';
+import useStore from './../store/Store'
 
 export const Panel = () => {
 
-  const params = useContext(DiagramContext);
+  const state = useStore((state) => state);
 
   return (
     <div className='panel'>
@@ -23,22 +23,24 @@ export const Panel = () => {
             </div>
             <RangeSetting
                 title='Diagram radius'
+                stateParam='diagramRadius'
                 min="10"
                 max="40"
-                value={params.diagramRadius}
-                width={params.width}
+                value={state.diagramRadius}
             />
             <RangeSetting
                 title='Group radius'
+                stateParam='groupRadius'
                 min="10"
                 max="40"
-                value={params.groupRadius}
+                value={state.groupRadius}
             />
             <RangeSetting
                 title='Point radius'
+                stateParam='pointRadius'
                 min="10"
                 max="40"
-                value={params.pointRadius}
+                value={state.pointRadius}
             />
         </div>
         <div className='panel-block'>

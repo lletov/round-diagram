@@ -164,6 +164,13 @@ table {
   align-items: center;
   justify-content: space-between;
 }
+.range-value{
+  width: 36px;
+  font-size: 16px;
+  border: solid 2px var(--gray);
+  border-radius: 8px;
+  text-align: center;
+}
 .btn-m{
   background-color: var(--accent);
   border-radius: 24px;

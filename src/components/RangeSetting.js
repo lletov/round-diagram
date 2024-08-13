@@ -10,10 +10,10 @@ export const RangeSetting = ({title, stateParam, min, max, value}) => {
         <div className='range-setting-title'>{title}</div>
         {/* <input 
           type='number' 
-          value={value}
-          onChange={(event)=>{setDiagramRadius(event.target.value, min, max)}}
+          defaultValue={value}
+          onChange={(event)=>{setRangeInput(stateParam, event.target.value, min, max)}}
         /> */}
-        <p>{value}</p>
+        <div className='range-value'>{value}</div>
         <div className='range-input'>
             <input 
               type='range' 
@@ -24,7 +24,7 @@ export const RangeSetting = ({title, stateParam, min, max, value}) => {
             />
             <div>
                 <p>{min}</p>
-                <p>{value}</p>
+                {/* <p>{value}</p> */}
                 <p>{max}</p>
             </div>
         </div>

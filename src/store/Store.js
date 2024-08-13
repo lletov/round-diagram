@@ -6,17 +6,19 @@ const useStore = create((set) => ({
     diagramRadius: 13,
     groupRadius: 30,
     pointRadius: 16,
-    setRangeInput(param, num, min, max) {
-        if (num >= min || num <= max){
-            set({ [param]: num})
+    
+    setRangeInput(parameter, number, min, max){
+        switch(number){
+            case number < min:
+                set({ [parameter]: min});
+                break;
+            case number > max:
+                set({ [parameter]: max});
+                break;
+            default:
+                set({ [parameter]: number})
         }
-        if (num < min){
-            set({ [param]: min})
-        }
-        if (num > max){
-            set({ [param]: max})
-        }
-    },
+    }
 }))
 
 export default useStore

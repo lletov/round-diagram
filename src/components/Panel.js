@@ -14,7 +14,7 @@ export const Panel = () => {
                 <h1>Upload File</h1>
                 <h2>Browse file in .csv format</h2>
             </div>
-            <input type='file'/>
+            <input type='file' onChange={(event)=> {state.setFile(event.target.files)}}/>
         </div>
         <div className='panel-block'>
             <div className='panel-block-header'>

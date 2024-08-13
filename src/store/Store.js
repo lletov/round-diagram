@@ -1,12 +1,13 @@
 import { create } from 'zustand'
 
 const useStore = create((set) => ({
+    file: null,
     width: 800,
     height: 600,
     diagramRadius: 13,
     groupRadius: 30,
     pointRadius: 16,
-    
+
     setRangeInput(parameter, number, min, max){
         switch(number){
             case number < min:
@@ -18,6 +19,10 @@ const useStore = create((set) => ({
             default:
                 set({ [parameter]: number})
         }
+    },
+    setFile(filesList){
+        set({ file: filesList[0]});
+        console.log(filesList[0]);
     }
 }))
 

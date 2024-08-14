@@ -14,7 +14,12 @@ export const Panel = () => {
                 <h1>Upload File</h1>
                 <h2>Browse file in .csv format</h2>
             </div>
-            <input type='file' onChange={(event)=> {state.setFile(event.target.files)}}/>
+            <input 
+                type='file' 
+                onChange={(event)=> {
+                    state.setFile(event.target.files);
+                }} 
+            />
         </div>
         <div className='panel-block'>
             <div className='panel-block-header'>
@@ -48,7 +53,7 @@ export const Panel = () => {
                 <h1>Save</h1>
                 <h2>Save diagram result on your PC as .png file</h2>
             </div>
-            <button className='btn-m'>Save</button>
+            <button className='btn-m' onClick={()=>{console.log(state.file)}}>Save</button>
         </div>
     </div>
   )

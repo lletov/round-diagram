@@ -2,6 +2,7 @@ import { create } from 'zustand'
 
 const useStore = create((set) => ({
     file: null,
+    diagramObject: null,
     width: 800,
     height: 600,
     diagramRadius: 13,
@@ -22,7 +23,9 @@ const useStore = create((set) => ({
     },
     setFile(filesList){
         set({ file: filesList[0]});
-        console.log(filesList[0]);
+    },
+    setDiagramObject(object){
+        set({ diagramObject: object});
     }
 }))
 

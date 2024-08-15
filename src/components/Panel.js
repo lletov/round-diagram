@@ -2,10 +2,21 @@ import React from 'react'
 import { useContext } from 'react';
 import { RangeSetting } from './RangeSetting'
 import useStore from './../store/Store'
+import { } from './../methods/Methods'
 
 export const Panel = () => {
 
   const state = useStore((state) => state);
+
+  function handleFile(file) {
+    console.log(file.name, ' file added')
+    let reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = function() {
+        // todo with reader.result and then set state
+        // state.setDiagramObject()
+    }
+  }
 
   return (
     <div className='panel'>
@@ -16,9 +27,10 @@ export const Panel = () => {
             </div>
             <input 
                 type='file' 
-                onChange={(event)=> {
-                    state.setFile(event.target.files);
-                }} 
+                onChange={(event) => {
+                    state.setFile(event.target.files)
+                    handleFile(event.target.files[0]);
+                }}
             />
         </div>
         <div className='panel-block'>
@@ -53,7 +65,7 @@ export const Panel = () => {
                 <h1>Save</h1>
                 <h2>Save diagram result on your PC as .png file</h2>
             </div>
-            <button className='btn-m' onClick={()=>{console.log(state.file)}}>Save</button>
+            <button className='btn-m' onClick={()=>{}}>Save</button>
         </div>
     </div>
   )

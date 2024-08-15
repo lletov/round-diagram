@@ -7,11 +7,9 @@ export const Diagram = () => {
   const state = useStore((state) => state);
 
   if (state.file){
-
-    uploadFile(state.file)
-    
     return(
       <>
+        <p>{state.diagramObject}</p>
         <p>{state.file.size}</p>
       </>
       

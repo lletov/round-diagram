@@ -24,8 +24,8 @@ const useStore = create((set) => ({
     setFile(filesList){
         set({ file: filesList[0]});
     },
-    setDiagramObject(object){
-        set({ diagramObject: object});
+    setDiagramObject(obj){
+        set({ diagramObject: obj});
     }
 }))
 

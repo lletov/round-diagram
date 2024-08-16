@@ -6,10 +6,11 @@ export const Diagram = () => {
 
   const state = useStore((state) => state);
 
-  if (state.file){
+  if (state.file && state.diagramObject){
+    let objAsStr = state.diagramObject.toString()
     return(
       <>
-        <p>{state.diagramObject}</p>
+        <p>{objAsStr}</p>
         <p>{state.file.size}</p>
       </>
       

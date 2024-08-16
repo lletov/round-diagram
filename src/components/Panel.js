@@ -2,17 +2,41 @@ import React from 'react'
 import { useContext } from 'react';
 import { RangeSetting } from './RangeSetting'
 import useStore from './../store/Store'
-import { } from './../methods/Methods'
+import { pointsByGroups, getGroupsCenters, getPointsCenters, transformToCorrectObject } from './../methods/Methods'
 
 export const Panel = () => {
 
   const state = useStore((state) => state);
 
   function handleFile(file) {
-    console.log(file.name, ' file added')
+    console.log(file.name, ' file added');
     let reader = new FileReader();
     reader.readAsText(file);
     reader.onload = function() {
+        console.log(file.name, ' file readed');
+        let pointsObjectByGroups = pointsByGroups(reader.result)[0]; 
+        let groups = pointsByGroups(reader.result)[1]; 
+        let groupsAmount = pointsByGroups(reader.result)[2]; 
+        let pointsObjectByGroupsWithGroupCenters = getGroupsCenters(
+            pointsObjectByGroups,
+            groups, 
+            groupsAmount, 
+            state.canvasCenterX, 
+            state.canvasCenterY, 
+            state.diagramRadius
+        );
+        let pointsObjectByGroupsWithAllCenters = getPointsCenters(
+            pointsObjectByGroupsWithGroupCenters, 
+            groups, 
+            groupsAmount, 
+            state.groupRadius
+        )
+        let correctObject = transformToCorrectObject(
+            pointsObjectByGroupsWithAllCenters,
+            groups
+        )
+        state.setDiagramObject(correctObject)
+
         // todo with reader.result and then set state
         // state.setDiagramObject()
     }

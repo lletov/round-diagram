@@ -8,6 +8,8 @@ const useStore = create((set) => ({
     diagramRadius: 13,
     groupRadius: 30,
     pointRadius: 16,
+    canvasCenterX: 400,
+    canvasCenterY: 450,
 
     setRangeInput(parameter, number, min, max){
         switch(number){

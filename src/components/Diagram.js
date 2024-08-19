@@ -6,14 +6,19 @@ export const Diagram = () => {
 
   const state = useStore((state) => state);
 
-  if (state.file && state.diagramObject){
-    let objAsStr = state.diagramObject.toString()
-    return(
-      <>
-        <p>{objAsStr}</p>
-        <p>{state.file.size}</p>
-      </>
-      
+  if (state.file){
+    if (state.diagramObject) {
+      let objAsStr = state.diagramObject.toString()
+      return(
+        <>
+          <p>{objAsStr}</p>
+          <p>{state.file.size}</p>
+        </>
+        
+      )
+    }
+    return (
+      <p>Loading...</p>
     )
   }
   return (

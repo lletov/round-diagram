@@ -9,36 +9,38 @@ export const Panel = () => {
   const state = useStore((state) => state);
 
   function handleFile(file) {
-    console.log(file.name, ' file added');
+    console.log(file.name, ' file uploaded');
     let reader = new FileReader();
     reader.readAsText(file);
     reader.onload = function() {
-        console.log(file.name, ' file readed');
-        let pointsObjectByGroups = pointsByGroups(reader.result)[0]; 
-        let groups = pointsByGroups(reader.result)[1]; 
-        let groupsAmount = pointsByGroups(reader.result)[2]; 
-        let pointsObjectByGroupsWithGroupCenters = getGroupsCenters(
-            pointsObjectByGroups,
-            groups, 
-            groupsAmount, 
-            state.canvasCenterX, 
-            state.canvasCenterY, 
-            state.diagramRadius
-        );
-        let pointsObjectByGroupsWithAllCenters = getPointsCenters(
-            pointsObjectByGroupsWithGroupCenters, 
-            groups, 
-            groupsAmount, 
-            state.groupRadius
-        )
-        let correctObject = transformToCorrectObject(
-            pointsObjectByGroupsWithAllCenters,
-            groups
-        )
-        state.setDiagramObject(correctObject)
-
-        // todo with reader.result and then set state
-        // state.setDiagramObject()
+        try{
+            console.log(file.name, ' file set');
+            let pointsObjectByGroups = pointsByGroups(reader.result)[0]; 
+            let groups = pointsByGroups(reader.result)[1]; 
+            let groupsAmount = pointsByGroups(reader.result)[2]; 
+            let pointsObjectByGroupsWithGroupCenters = getGroupsCenters(
+                pointsObjectByGroups,
+                groups, 
+                groupsAmount, 
+                state.canvasCenterX, 
+                state.canvasCenterY, 
+                state.diagramRadius
+            );
+            let pointsObjectByGroupsWithAllCenters = getPointsCenters(
+                pointsObjectByGroupsWithGroupCenters, 
+                groups, 
+                groupsAmount, 
+                state.groupRadius
+            )
+            let correctObject = transformToCorrectObject(
+                pointsObjectByGroupsWithAllCenters,
+                groups
+            )
+            state.setDiagramObject(correctObject)
+        }
+        catch(e){
+            console.error(e)
+        }
     }
   }
 
@@ -51,6 +53,7 @@ export const Panel = () => {
             </div>
             <input 
                 type='file' 
+                accept='.csv' 
                 onChange={(event) => {
                     state.setFile(event.target.files)
                     handleFile(event.target.files[0]);

@@ -2,7 +2,15 @@ import React from 'react'
 import { useContext } from 'react';
 import { RangeSetting } from './RangeSetting'
 import useStore from './../store/Store'
-import { pointsByGroups, getGroupsCenters, getPointsCenters, transformToCorrectObject } from './../methods/Methods'
+import { 
+    pointsByGroups, 
+    getGroupsCenters, 
+    getPointsCenters, 
+    transformToCorrectObject, 
+    drawLines,
+    addDOMPoints,
+} from './../methods/Methods'
+// import { drawLine } from '../methods/MathMethods';
 
 export const Panel = () => {
 
@@ -31,12 +39,16 @@ export const Panel = () => {
                 groups, 
                 groupsAmount, 
                 state.groupRadius
-            )
+            );
             let correctObject = transformToCorrectObject(
                 pointsObjectByGroupsWithAllCenters,
                 groups
             )
             state.setDiagramObject(correctObject)
+
+            // let canvas = document.getElementById("canvas");
+            // let ctx = canvas.getContext("2d");
+            // drawLines(correctObject, ctx);
         }
         catch(e){
             console.error(e)

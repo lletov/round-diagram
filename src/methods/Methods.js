@@ -1,5 +1,6 @@
 
 import { drawTextCircle, drawLine, getGroupCenters } from './MathMethods'
+import React from 'react';
 
 // - create diagram (after new file or new params)
 // - clear data & canvas
@@ -75,6 +76,33 @@ export function transformToCorrectObject(pointsArr, groups){
                 transformedPoints[key] = pointsArr[group].points[key]; 
             }
     });
-    console.log(transformedPoints)
     return transformedPoints
+}
+
+export function drawLines(pointsArr, ctx){
+    for (let point of Object.keys(pointsArr)) {
+        let startPoint = pointsArr[point].coords
+        // console.log(transformedPoints[point].contacts)
+        if (pointsArr[point].contacts[0] !== ''){
+            for (let contact of pointsArr[point].contacts) {
+                // console.log(transformedPoints[point]);
+                drawLine(
+                    startPoint[0],
+                    startPoint[1], 
+                    pointsArr[contact].coords[0],
+                    pointsArr[contact].coords[1], 
+                    ctx
+                )
+            }
+        }
+        
+    };
+}
+
+export function addDOMPoints(){
+    React.createElement('div', {
+        children: React.createElement('div', {className: "blue" }),
+        className: "red",
+      }
+    );
 }

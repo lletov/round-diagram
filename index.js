@@ -77,6 +77,7 @@ function readFile(event){
                 pointsArr[groups[i]].points[Object.keys(pointsArr[groups[i]].points)[j]].coords = pointCenters[j]
             } 
         }
+        console.log(pointsArr);
 
         let transformedPoints = {}
 
@@ -85,6 +86,7 @@ function readFile(event){
                     transformedPoints[key] = pointsArr[group].points[key]; 
                 }
         });
+        console.log(transformedPoints);
 
         // draw lines
         for (let point of Object.keys(transformedPoints)) {

@@ -5,7 +5,7 @@ const useStore = create((set) => ({
     diagramObject: null,
     width: 800,
     height: 600,
-    diagramRadius: 13,
+    diagramRadius: 33,
     groupRadius: 30,
     pointRadius: 16,
     canvasCenterX: 400,

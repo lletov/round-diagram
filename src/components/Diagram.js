@@ -20,19 +20,18 @@ export const Diagram = () => {
     console.log(window.innerWidth);
     state.setDiagramWidth(window.innerWidth);
     state.setDiagramHeight(window.innerHeight);
+    state.setCanvasCenterX((window.innerWidth - 307) / 2);
+    state.setCanvasCenterY((window.innerHeight - 8) / 2)
   }
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize)
-    state.setDiagramWidth(window.innerWidth);
-    state.setDiagramHeight(window.innerHeight);
+    window.addEventListener("resize", handleResize);
+    handleResize();
 
   }, [state.diagramWidth])
 
   if (state.file){
     if (state.diagramObject) {
-      let diagramCenterX = (window.innerWidth - 307) / 2;
-      let diagramCenterY = (window.innerHeight - 8) / 2;
 
       let pointsObjectByGroups = pointsByGroups(state.diagramObject)[0]; 
       let groups = pointsByGroups(state.diagramObject)[1]; 
@@ -41,8 +40,8 @@ export const Diagram = () => {
           pointsObjectByGroups,
           groups, 
           groupsAmount, 
-          diagramCenterX, 
-          diagramCenterY, 
+          state.canvasCenterX, 
+          state.canvasCenterY,  
           state.diagramRadius
       );
       let pointsObjectByGroupsWithAllCenters = getPointsCenters(

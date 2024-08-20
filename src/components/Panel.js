@@ -49,21 +49,21 @@ export const Panel = () => {
                 title='Diagram radius'
                 stateParam='diagramRadius'
                 min="50"
-                max="300"
+                max={Math.round(state.canvasCenterY)}
                 value={state.diagramRadius}
             />
             <RangeSetting
                 title='Group radius'
                 stateParam='groupRadius'
                 min="25"
-                max="100"
+                max={Math.round(state.canvasCenterY/2)}
                 value={state.groupRadius}
             />
             <RangeSetting
                 title='Point radius'
                 stateParam='pointRadius'
                 min="50"
-                max="150"
+                max={Math.round(state.canvasCenterY/2)}
                 value={state.pointRadius}
             />
         </div>

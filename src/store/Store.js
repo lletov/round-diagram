@@ -34,7 +34,13 @@ const useStore = create((set) => ({
     },
     setDiagramHeight(num){
         set({ diagramHeight: num});
-    }
+    },
+    setCanvasCenterX(num){
+        set({ canvasCenterX: num});
+    },
+    setCanvasCenterY(num){
+        set({ canvasCenterY: num});
+    },
 }))
 
 export default useStore

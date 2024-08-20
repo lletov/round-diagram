@@ -18,14 +18,16 @@ export const Diagram = () => {
 
   const handleResize = () => {
     console.log(window.innerWidth);
-    // let width = window.innerWidth
-    // state.setDiagramWidth(window.innerWidth);
-    // state.setDiagramHeight(window.innerHeight);
+    state.setDiagramWidth(window.innerWidth);
+    state.setDiagramHeight(window.innerHeight);
   }
 
   useEffect(() => {
     window.addEventListener("resize", handleResize)
-  })
+    state.setDiagramWidth(window.innerWidth);
+    state.setDiagramHeight(window.innerHeight);
+
+  }, [state.diagramWidth])
 
   if (state.file){
     if (state.diagramObject) {

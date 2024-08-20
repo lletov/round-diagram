@@ -6,11 +6,8 @@ import {
     pointsByGroups, 
     getGroupsCenters, 
     getPointsCenters, 
-    transformToCorrectObject, 
-    drawLines,
-    addDOMPoints,
+    transformToCorrectObject,
 } from './../methods/Methods'
-// import { drawLine } from '../methods/MathMethods';
 
 export const Panel = () => {
 
@@ -21,38 +18,9 @@ export const Panel = () => {
     let reader = new FileReader();
     reader.readAsText(file);
     reader.onload = function() {
-        try{
-            console.log(file.name, ' file set');
-            let pointsObjectByGroups = pointsByGroups(reader.result)[0]; 
-            let groups = pointsByGroups(reader.result)[1]; 
-            let groupsAmount = pointsByGroups(reader.result)[2]; 
-            let pointsObjectByGroupsWithGroupCenters = getGroupsCenters(
-                pointsObjectByGroups,
-                groups, 
-                groupsAmount, 
-                state.canvasCenterX, 
-                state.canvasCenterY, 
-                state.diagramRadius
-            );
-            let pointsObjectByGroupsWithAllCenters = getPointsCenters(
-                pointsObjectByGroupsWithGroupCenters, 
-                groups, 
-                groupsAmount, 
-                state.groupRadius
-            );
-            let correctObject = transformToCorrectObject(
-                pointsObjectByGroupsWithAllCenters,
-                groups
-            )
-            state.setDiagramObject(correctObject)
-
-            // let canvas = document.getElementById("canvas");
-            // let ctx = canvas.getContext("2d");
-            // drawLines(correctObject, ctx);
-        }
-        catch(e){
-            console.error(e)
-        }
+        console.log(file.name, ' file set');
+        console.log(typeof reader.result)
+        state.setDiagramObject(reader.result);
     }
   }
 

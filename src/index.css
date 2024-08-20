@@ -70,6 +70,7 @@ table {
   height: 100vh;
 }
 .panel {
+  box-sizing: border-box;
   padding: 12px;
   width: 320px;
   display: flex;
@@ -194,6 +195,21 @@ table {
   height: 100vh;
 }
 
-.point {
+/* .point {
   position: absolute;
+  
+} */
+.point{
+	position: fixed;
+	border: solid 1px black;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
+/* .point:hover{
+  background-color: yellow;
+} */

@@ -10,6 +10,7 @@ const useStore = create((set) => ({
     pointRadius: 70,
     canvasCenterX: null,
     canvasCenterY: null,
+    saveBtnHover: false,
 
     setRangeInput(parameter, number, min, max){
         switch(number){
@@ -40,6 +41,12 @@ const useStore = create((set) => ({
     },
     setCanvasCenterY(num){
         set({ canvasCenterY: num});
+    },
+    setSaveBtnHoverTrue(){
+        set({ saveBtnHover: true});
+    },
+    setSaveBtnHoverFalse(){
+        set({ saveBtnHover: false});
     },
 }))
 

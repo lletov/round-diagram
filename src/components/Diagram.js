@@ -24,7 +24,6 @@ export const Diagram = () => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
-    console.log(diagramRef.current.offsetWidth);
 
   }, [state.diagramWidth, diagramRef.current])
 
@@ -67,17 +66,19 @@ export const Diagram = () => {
             </div>
         );
         return (
-          <>
-            <div className='diagram' ref={diagramRef}>
+            <div 
+              className='diagram' 
+              ref={diagramRef}
+              style={{borderColor: state.saveBtnHover ? '#8732DC' : '#fff'}}
+            >
               {pointsList}
               <Canvas
                 ctxWidth={diagramRef.current.offsetWidth}
                 ctxHeight={diagramRef.current.offsetHeight}
                 object={correctObject}
               />
+              {state.saveBtnHover ? <div className='save-marker'>This area will be saved</div> : null}
             </div>
-            
-          </>
         )
       }
     return (

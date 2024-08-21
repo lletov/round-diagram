@@ -16,6 +16,19 @@ export const Panel = () => {
         state.setDiagramObject(reader.result);
     }
   }
+  // setSaveBtnHover
+
+  function saveBtnMouseOver(){
+    console.log('save btn hover')
+    state.setSaveBtnHoverTrue()
+  }
+  function saveBtnMouseLeave(){
+    console.log('save btn not hover')
+    state.setSaveBtnHoverFalse()
+  }
+  function saveBtnMouseClick(){
+    console.log('save btn clicked')
+  }
 
   return (
     <div className='panel'>
@@ -65,7 +78,13 @@ export const Panel = () => {
                 <h1>Save</h1>
                 <h2>Save diagram result on your PC as .png file</h2>
             </div>
-            <button className='btn-m' onClick={()=>{}}>Save</button>
+            <button 
+                className='btn-m' 
+                onClick={saveBtnMouseClick} 
+                onMouseOver={saveBtnMouseOver}
+                onMouseLeave={saveBtnMouseLeave}
+                
+            >Save</button>
         </div>
     </div>
   )

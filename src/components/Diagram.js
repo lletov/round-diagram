@@ -1,23 +1,20 @@
 import React from 'react'
 import useStore from './../store/Store'
-import { useState, useEffect, useLayoutEffect } from 'react'
-import { Point } from './Point'
+import { useEffect, useRef } from 'react'
+import { Canvas } from './Canvas'
 import { 
-  testCreateObjectFromFile, 
-  uploadFile,
   pointsByGroups, 
   getGroupsCenters, 
   getPointsCenters, 
   transformToCorrectObject,
-  drawLines,
 } from './../methods/Methods'
 
 export const Diagram = () => {
+  const diagramRef = useRef(null);
 
   const state = useStore((state) => state);
 
   const handleResize = () => {
-    console.log(window.innerWidth);
     state.setDiagramWidth(window.innerWidth);
     state.setDiagramHeight(window.innerHeight);
     state.setCanvasCenterX((window.innerWidth - 307) / 2);
@@ -27,8 +24,9 @@ export const Diagram = () => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
+    console.log(diagramRef.current.offsetWidth);
 
-  }, [state.diagramWidth])
+  }, [state.diagramWidth, diagramRef.current])
 
   if (state.file){
     if (state.diagramObject) {
@@ -54,9 +52,6 @@ export const Diagram = () => {
               pointsObjectByGroupsWithAllCenters,
               groups
       );
-      // let canvas = document.getElementById("canvas");
-      // let ctx = canvas.getContext("2d");
-      // drawLines(correctObject, ctx);
       const pointsList = Object.keys(correctObject).map(k =>
           <div 
             key={k}
@@ -71,13 +66,25 @@ export const Diagram = () => {
               {correctObject[k].title}
             </div>
         );
-        return <div className='diagram'>{pointsList}</div>
+        return (
+          <>
+            <div className='diagram' ref={diagramRef}>
+              {pointsList}
+              <Canvas
+                ctxWidth={diagramRef.current.offsetWidth}
+                ctxHeight={diagramRef.current.offsetHeight}
+                object={correctObject}
+              />
+            </div>
+            
+          </>
+        )
       }
     return (
-      <div className='diagram'>Loading...</div>
+      <div className='diagram' ref={diagramRef}>Loading...</div>
       )
   }
   return (
-    <div className='diagram'>Diagram</div>
+    <div className='diagram' ref={diagramRef}>Diagram</div>
   )
 }

@@ -2,12 +2,6 @@ import React from 'react'
 import { useContext } from 'react';
 import { RangeSetting } from './RangeSetting'
 import useStore from './../store/Store'
-import { 
-    pointsByGroups, 
-    getGroupsCenters, 
-    getPointsCenters, 
-    transformToCorrectObject,
-} from './../methods/Methods'
 
 export const Panel = () => {
 
@@ -19,7 +13,6 @@ export const Panel = () => {
     reader.readAsText(file);
     reader.onload = function() {
         console.log(file.name, ' file set');
-        console.log(typeof reader.result)
         state.setDiagramObject(reader.result);
     }
   }

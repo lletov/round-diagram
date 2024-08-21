@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useContext } from 'react'
 import useStore from './../store/Store'
 
 export const RangeSetting = ({title, stateParam, min, max, value}) => {

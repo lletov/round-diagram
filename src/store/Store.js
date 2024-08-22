@@ -11,6 +11,7 @@ const useStore = create((set) => ({
     canvasCenterX: null,
     canvasCenterY: null,
     saveBtnHover: false,
+    fileTooltipBtnHover: false,
 
     setRangeInput(parameter, number, min, max){
         switch(number){
@@ -44,6 +45,9 @@ const useStore = create((set) => ({
     },
     setSaveBtnHover(bool){
         set({ saveBtnHover: bool});
+    },
+    setFileTooltipBtnHover(bool){
+        set({ fileTooltipBtnHover: bool});
     },
 }))
 

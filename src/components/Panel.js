@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { RangeSetting } from './RangeSetting'
 import useStore from './../store/Store'
 import takeScreenShot from './../methods/Screenshot'
+import { FileTooltip } from './FileTooltip';
 
 export const Panel = () => {
 
@@ -17,11 +18,9 @@ export const Panel = () => {
         state.setDiagramObject(reader.result);
     }
   }
-  // setSaveBtnHover
 
-  function saveBtnMouseOver(){
-    console.log('save btn hover')
-    state.setSaveBtnHover(true)
+  function handleSaveBtnMouse(bool){
+    state.setSaveBtnHover(bool)
   }
   function saveBtnMouseLeave(){
     console.log('save btn not hover')
@@ -33,13 +32,25 @@ export const Panel = () => {
         takeScreenShot("diagram-area", state.file.name.split(".")[0] + "_diagram", "image/png");
     }
   }
+  function handleFileTooltipBtn(bool){
+    state.setFileTooltipBtnHover(bool)
+  }
 
   return (
     <div className='panel'>
         <div className='panel-block'>
             <div className='panel-block-header'>
                 <h1>Upload File</h1>
-                <h2>Browse file in .csv format</h2>
+                <div className='file-panel-header'>
+                    <h2>Browse file in .csv format</h2>
+                    <div 
+                        className='file-info-btn'
+                        onClick={()=>{handleFileTooltipBtn(!state.fileTooltipBtnHover)}}
+                    >i
+                    </div>
+                    <FileTooltip/>
+                </div>
+                
             </div>
             <input 
                 type='file' 
@@ -85,8 +96,8 @@ export const Panel = () => {
             <button 
                 className='btn-m' 
                 onClick={saveBtnMouseClick} 
-                onMouseOver={saveBtnMouseOver}
-                onMouseLeave={saveBtnMouseLeave}
+                onMouseOver={()=>{handleSaveBtnMouse(true)}}
+                onMouseLeave={()=>{handleSaveBtnMouse(false)}}
                 
             >Save</button>
         </div>

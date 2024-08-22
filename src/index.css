@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+*{
+  box-sizing: border-box;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -63,22 +67,24 @@ table {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 4px;
+  justify-content: space-between;
 }
 .diagram{
-  width: 100%;
+  width: calc(100% - 312px - 12px);
   height: calc(100vh - 8px);
 }
 .panel {
+  position: relative;
   box-sizing: border-box;
   padding: 12px;
-  width: 320px;
+  width: 312px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   border-radius: 24px;
   border: solid 1px var(--gray);
   box-shadow: 0px 0px 8px var(--gray);
+  background-color: var(--white);
 }
 .panel-block {
   display: flex;
@@ -145,6 +151,34 @@ table {
   font-weight: 500;
   color: var(--dark-gray);
 }
+.file-panel-header{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.file-info-btn{
+  position: relative;
+  height: 14px;
+  width: 14px;
+  border-radius: 30px;
+  border: solid 1px var(--dark-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-gray);
+  font-weight: 500;
+  font-size: 10px;
+  cursor: pointer;
+}
+.file-info-tooltip{
+  position: absolute;
+  top: 60px;
+  right: 128px;
+  width: 150%;
+  max-height: 50vh;
+  z-index: 10;
+}
+
 .range-setting{
   display: flex;
   flex-direction: row;
@@ -167,10 +201,13 @@ table {
 }
 .range-value{
   width: 36px;
+  height: 28px;
   font-size: 14px;
   border: solid 2px var(--gray);
   border-radius: 8px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .btn-m{
   background-color: var(--accent);
@@ -182,7 +219,19 @@ table {
   cursor: pointer;
   transition: background-color 300ms;
 }
-.btn-m:hover{
+.btn-s{
+  background-color: var(--accent);
+  border-radius: 24px;
+  border: none;
+  height: 24px;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
+.btn-m:hover, .btn-s:hover{
   background-color: var(--accent-hover);
   transition: background-color 300ms;
 }
@@ -207,10 +256,6 @@ table {
   z-index: 3;
 }
 
-/* .point:hover{
-  background-color: yellow;
-} */
-
 .save-marker{
   position: absolute;
   top: 4px;
@@ -219,4 +264,23 @@ table {
   border-radius: 30px;
   background-color: var(--accent);
   color: var(--white);
+}
+
+.file-sample{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.file-sample-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-sample-code{
+  background-color: var(--gray);
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 16px;
 }

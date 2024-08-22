@@ -68,6 +68,7 @@ export const Diagram = () => {
         return (
             <div 
               className='diagram' 
+              id='diagram-area'
               ref={diagramRef}
               style={{borderColor: state.saveBtnHover ? '#8732DC' : '#fff'}}
             >

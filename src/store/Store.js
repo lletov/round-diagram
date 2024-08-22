@@ -42,11 +42,8 @@ const useStore = create((set) => ({
     setCanvasCenterY(num){
         set({ canvasCenterY: num});
     },
-    setSaveBtnHoverTrue(){
-        set({ saveBtnHover: true});
-    },
-    setSaveBtnHoverFalse(){
-        set({ saveBtnHover: false});
+    setSaveBtnHover(bool){
+        set({ saveBtnHover: bool});
     },
 }))
 

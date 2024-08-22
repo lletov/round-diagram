@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext } from 'react';
 import { RangeSetting } from './RangeSetting'
 import useStore from './../store/Store'
+import takeScreenShot from './../methods/Screenshot'
 
 export const Panel = () => {
 
@@ -20,14 +21,17 @@ export const Panel = () => {
 
   function saveBtnMouseOver(){
     console.log('save btn hover')
-    state.setSaveBtnHoverTrue()
+    state.setSaveBtnHover(true)
   }
   function saveBtnMouseLeave(){
     console.log('save btn not hover')
-    state.setSaveBtnHoverFalse()
+    state.setSaveBtnHover(false)
   }
   function saveBtnMouseClick(){
-    console.log('save btn clicked')
+    console.log('save btn clicked');
+    if (state.file && state.diagramObject){
+        takeScreenShot("diagram-area", state.file.name.split(".")[0] + "_diagram", "image/png");
+    }
   }
 
   return (

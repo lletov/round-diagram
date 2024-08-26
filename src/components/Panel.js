@@ -1,5 +1,5 @@
 import React from 'react'
-import { useContext } from 'react';
+import { useContext, useRef, useEffect } from 'react';
 import { RangeSetting } from './RangeSetting'
 import useStore from './../store/Store'
 import takeScreenShot from './../methods/Screenshot'
@@ -8,6 +8,8 @@ import { FileTooltip } from './FileTooltip';
 export const Panel = () => {
 
   const state = useStore((state) => state);
+
+  const refOutside = useRef(null);
 
   function handleFile(file) {
     console.log(file.name, ' file uploaded');
@@ -22,10 +24,6 @@ export const Panel = () => {
   function handleSaveBtnMouse(bool){
     state.setSaveBtnHover(bool)
   }
-  function saveBtnMouseLeave(){
-    console.log('save btn not hover')
-    state.setSaveBtnHover(false)
-  }
   function saveBtnMouseClick(){
     console.log('save btn clicked');
     if (state.file && state.diagramObject){
@@ -36,6 +34,19 @@ export const Panel = () => {
     state.setFileTooltipBtnHover(bool)
   }
 
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutsideTooltip, false);
+    return () => {
+      document.removeEventListener("click", handleClickOutsideTooltip, false);
+    };
+  }, []);
+
+  const handleClickOutsideTooltip = event => {
+    if (refOutside.current && !refOutside.current.contains(event.target)) {
+        handleFileTooltipBtn(false);
+    }
+  };
+
   return (
     <div className='panel'>
         <div className='panel-block'>
@@ -44,6 +55,7 @@ export const Panel = () => {
                 <div className='file-panel-header'>
                     <h2>Browse file in .csv format</h2>
                     <div 
+                        ref={refOutside}
                         className='file-info-btn'
                         onClick={()=>{handleFileTooltipBtn(!state.fileTooltipBtnHover)}}
                     >i

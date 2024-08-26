@@ -307,4 +307,5 @@ table {
 .about-text a{
   text-decoration: underline;
   cursor: pointer;
+  color: var(--dark-gray);
 }

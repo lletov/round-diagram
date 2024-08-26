@@ -1,17 +1,26 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
 
 export default function FileSample() {
   function handleClick(){
     const element = document.getElementById('file-sample-code');
     const text = element.innerText;
     navigator.clipboard.writeText(text);
+    setBtnText('Copied');
+    setTimeout(() => {setBtnText('Copy')}, 2000);
     console.log('file sample copied')
   }
+
+  const [btnText, setBtnText] = useState('Copy');
+
+  useEffect(() => {
+    
+  }, [btnText]);
   return (
     <div className='file-sample'>
         <div className='file-sample-header'>
             <h1>File sample</h1>
-            <button className='btn-s' onClick={handleClick}>Copy</button>
+            <button className='btn-s' onClick={handleClick}>{btnText}</button>
         </div>
         <div className='file-sample-code' id='file-sample-code'>
         Title,Point,Group,Contacts<br/>

@@ -8,6 +8,7 @@ import {
   getPointsCenters, 
   transformToCorrectObject,
 } from './../methods/Methods'
+import { About } from './About'
 
 export const Diagram = () => {
   const diagramRef = useRef(null);
@@ -87,6 +88,6 @@ export const Diagram = () => {
       )
   }
   return (
-    <div className='diagram' ref={diagramRef}>Diagram</div>
+    <div className='diagram' ref={diagramRef}><About/></div>
   )
 }

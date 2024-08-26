@@ -1,13 +1,24 @@
 import React from 'react'
+import { useRef, useEffect } from 'react';
 import useStore from './../store/Store'
 import FileSample from './FileSample';
+import { useClickOutside } from './hooks/ClickOutside';
 
 export const FileTooltip = () => {
 
+    const tooltipRef= useRef(null);
+
     const state = useStore((state) => state);
+
+    function closeTooltip(){
+        state.setFileTooltipBtnHover(false)
+    }
+
+    useClickOutside(tooltipRef, closeTooltip);
 
     return (
         <div 
+            ref={tooltipRef}
             className='panel file-info-tooltip' 
             style={{visibility: state.fileTooltipBtnHover === true 
                 ? 'visible' 

@@ -9,7 +9,7 @@ export const Panel = () => {
 
   const state = useStore((state) => state);
 
-  const refOutside = useRef(null);
+  
 
   function handleFile(file) {
     console.log(file.name, ' file uploaded');
@@ -34,18 +34,18 @@ export const Panel = () => {
     state.setFileTooltipBtnHover(bool)
   }
 
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutsideTooltip, false);
-    return () => {
-      document.removeEventListener("click", handleClickOutsideTooltip, false);
-    };
-  }, []);
+//   useEffect(() => {
+//     document.addEventListener("click", handleClickOutsideTooltip, false);
+//     return () => {
+//       document.removeEventListener("click", handleClickOutsideTooltip, false);
+//     };
+//   }, []);
 
-  const handleClickOutsideTooltip = event => {
-    if (refOutside.current && !refOutside.current.contains(event.target)) {
-        handleFileTooltipBtn(false);
-    }
-  };
+//   const handleClickOutsideTooltip = event => {
+//     if (refOutside.current && !refOutside.current.contains(event.target)) {
+//         handleFileTooltipBtn(false);
+//     }
+//   };
 
   return (
     <div className='panel'>
@@ -54,8 +54,7 @@ export const Panel = () => {
                 <h1>Upload File</h1>
                 <div className='file-panel-header'>
                     <h2>Browse file in .csv format</h2>
-                    <div 
-                        ref={refOutside}
+                    <div
                         className='file-info-btn'
                         onClick={()=>{handleFileTooltipBtn(!state.fileTooltipBtnHover)}}
                     >i

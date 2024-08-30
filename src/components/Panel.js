@@ -10,8 +10,6 @@ export const Panel = () => {
 
   const state = useStore((state) => state);
 
-  
-
   function handleFile(file) {
     console.log(file.name, ' file uploaded');
     let reader = new FileReader();
@@ -34,6 +32,30 @@ export const Panel = () => {
   function handleFileTooltipBtn(bool){
     state.setFileTooltipBtnHover(bool)
   }
+
+  const rangeSettings = [
+    {
+        title: 'Diagram radius',
+        stateParam: 'diagramRadius',
+        min: "50",
+        max: Math.round(state.canvasCenterY),
+        value: state.diagramRadius
+    },
+    {
+        title: 'Group radius',
+        stateParam: 'groupRadius',
+        min: "25",
+        max: Math.round(state.canvasCenterY/2),
+        value: state.groupRadius
+    },
+    {
+        title: 'Point radius',
+        stateParam: 'pointRadius',
+        min: "50",
+        max: Math.round(state.canvasCenterY/2),
+        value: state.pointRadius
+    }
+]
 
 //   useEffect(() => {
 //     document.addEventListener("click", handleClickOutsideTooltip, false);
@@ -79,27 +101,15 @@ export const Panel = () => {
                 <h1>Settings</h1>
                 <h2>Set diagram params as you need</h2>
             </div>
-            <RangeSetting
-                title='Diagram radius'
-                stateParam='diagramRadius'
-                min="50"
-                max={Math.round(state.canvasCenterY)}
-                value={state.diagramRadius}
-            />
-            <RangeSetting
-                title='Group radius'
-                stateParam='groupRadius'
-                min="25"
-                max={Math.round(state.canvasCenterY/2)}
-                value={state.groupRadius}
-            />
-            <RangeSetting
-                title='Point radius'
-                stateParam='pointRadius'
-                min="50"
-                max={Math.round(state.canvasCenterY/2)}
-                value={state.pointRadius}
-            />
+            {rangeSettings.map((s, index) => 
+               <RangeSetting key={index}
+                    title={s.title}
+                    stateParam={s.stateParam}
+                    min={s.min}
+                    max={s.max}
+                    value={s.value}
+               /> 
+            )}
         </div>
         <div className='panel-block'>
             <div className='panel-block-header'>

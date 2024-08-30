@@ -95,7 +95,7 @@ table {
   flex-direction: row;
   gap: 12px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   border-bottom: solid 1px var(--gray);
   padding-bottom: 8px;
 }
@@ -105,7 +105,7 @@ table {
   color: var(--accent);
 }
 .panel-header img {
-  height: 16px;
+  height: 20px;
   filter: brightness(0) saturate(100%) invert(26%) sepia(70%) saturate(4008%) hue-rotate(260deg) brightness(87%) contrast(98%);
 }
 .panel-header-links{

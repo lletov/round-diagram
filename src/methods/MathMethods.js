@@ -1,14 +1,3 @@
-// export function drawTextCircle(x, y, radius, text, point){
-//     let div = document.createElement('div');
-//     div.className = `item ${point}`;
-//     div.innerHTML = text;
-//     document.getElementById('elements').appendChild(div);
-//     div.style.width = radius * 2 + 'px';
-//     div.style.height = radius * 2 + 'px';
-//     div.style.top = y + 'px';
-//     div.style.left = x + 'px';
-// }
-
 export function drawLine(startX, startY, endX, endY, ctx){
     ctx.beginPath();
     ctx.moveTo(startX, startY);

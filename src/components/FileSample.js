@@ -2,20 +2,18 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 
 export default function FileSample() {
+
   function handleClick(){
     const element = document.getElementById('file-sample-code');
     const text = element.innerText;
     navigator.clipboard.writeText(text);
     setBtnText('Copied');
-    setTimeout(() => {setBtnText('Copy')}, 2000);
+    setTimeout(() => {setBtnText('Copy')}, 1000);
     console.log('file sample copied')
   }
 
   const [btnText, setBtnText] = useState('Copy');
-
-  useEffect(() => {
-    
-  }, [btnText]);
+  
   return (
     <div className='file-sample'>
         <div className='file-sample-header'>

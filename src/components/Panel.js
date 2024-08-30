@@ -4,6 +4,7 @@ import { RangeSetting } from './RangeSetting'
 import useStore from './../store/Store'
 import takeScreenShot from './../methods/Screenshot'
 import { FileTooltip } from './FileTooltip';
+import { PanelHeader } from './PanelHeader';
 
 export const Panel = () => {
 
@@ -50,6 +51,7 @@ export const Panel = () => {
   return (
     <div className='panel'>
         <div className='panel-block'>
+            <PanelHeader/>
             <div className='panel-block-header'>
                 <h1>Upload File</h1>
                 <div className='file-panel-header'>

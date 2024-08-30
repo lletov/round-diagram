@@ -1,5 +1,5 @@
 import React from 'react'
-import example from './../example.svg'
+import example from './../assets/example.svg'
 
 export const About = () => {
   return (

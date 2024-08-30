@@ -89,6 +89,37 @@ table {
   box-shadow: 0px 0px 8px var(--gray);
   background-color: var(--white);
 }
+
+.panel-header{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid 1px var(--gray);
+  padding-bottom: 8px;
+}
+.panel-header h1 {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.panel-header img {
+  height: 16px;
+  filter: brightness(0) saturate(100%) invert(26%) sepia(70%) saturate(4008%) hue-rotate(260deg) brightness(87%) contrast(98%);
+}
+.panel-header-links{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.panel-header-links .a {
+  cursor: pointer;
+}
+
 .panel-block {
   display: flex;
   flex-direction: column;

@@ -340,3 +340,26 @@ table {
   cursor: pointer;
   color: var(--dark-gray);
 }
+
+.small-width-description {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .app {
+    flex-direction: column;
+  }
+  .diagram {
+    width: 90%;
+    text-align: center;
+  }
+  .panel {
+    display: none;
+  }
+  .small-width-description {
+    padding-top: 48px;
+    display: flex;
+    font-size: 16px;
+    color: var(--accent);
+  }
+}

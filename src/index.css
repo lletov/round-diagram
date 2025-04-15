@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap');
+
+*{
+  box-sizing: border-box;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -36,6 +42,7 @@ body {
   font-weight: 500;
   color: var(--black);
   --gray: #e5e5e5;
+  --light-gray: #f5f5f5;
   --dark-gray: #8f8f8f;
   --black: #222222;
   --accent: #8732DC;
@@ -63,22 +70,56 @@ table {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 4px;
+  justify-content: space-between;
 }
 .diagram{
-  width: 100%;
-  height: 100vh;
+  width: calc(100% - 312px - 12px);
+  height: calc(100vh - 8px);
 }
 .panel {
+  position: relative;
+  box-sizing: border-box;
   padding: 12px;
-  width: 320px;
+  width: 312px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   border-radius: 24px;
   border: solid 1px var(--gray);
   box-shadow: 0px 0px 8px var(--gray);
+  background-color: var(--white);
 }
+
+.panel-header{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px var(--gray);
+  padding-bottom: 8px;
+}
+.panel-header h1 {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.panel-header img {
+  height: 20px;
+  filter: brightness(0) saturate(100%) invert(26%) sepia(70%) saturate(4008%) hue-rotate(260deg) brightness(87%) contrast(98%);
+}
+.panel-header-links{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.panel-header-links .a {
+  cursor: pointer;
+}
+
 .panel-block {
   display: flex;
   flex-direction: column;
@@ -144,6 +185,34 @@ table {
   font-weight: 500;
   color: var(--dark-gray);
 }
+.file-panel-header{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.file-info-btn{
+  position: relative;
+  height: 14px;
+  width: 14px;
+  border-radius: 30px;
+  border: solid 1px var(--dark-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-gray);
+  font-weight: 500;
+  font-size: 10px;
+  cursor: pointer;
+}
+.file-info-tooltip{
+  position: absolute;
+  top: 60px;
+  right: 128px;
+  width: 150%;
+  max-height: 50vh;
+  z-index: 10;
+}
+
 .range-setting{
   display: flex;
   flex-direction: row;
@@ -166,10 +235,13 @@ table {
 }
 .range-value{
   width: 36px;
+  height: 28px;
   font-size: 14px;
   border: solid 2px var(--gray);
-  border-radius: 8px;
-  text-align: center;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .btn-m{
   background-color: var(--accent);
@@ -181,7 +253,113 @@ table {
   cursor: pointer;
   transition: background-color 300ms;
 }
+.btn-s{
+  border-radius: 24px;
+  background-color: var(--white);
+  border: solid 1px var(--accent);
+  height: 24px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
 .btn-m:hover{
   background-color: var(--accent-hover);
   transition: background-color 300ms;
+}
+.btn-s:hover{
+  border-color: var(--accent-hover);
+  transition: background-color 300ms;
+}
+.diagram{
+  position: relative;
+  border: solid 2px var(--white);
+  border-radius: 12px;
+  border-style: dashed;
+}
+#canvas {
+  position: absolute;
+}
+.point{
+	position: fixed;
+	border: solid 1px black;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	background-color: var(--white);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  z-index: 3;
+}
+
+.save-marker{
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 4px;
+  border-radius: 30px;
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+.file-sample{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.file-sample-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-sample-code{
+  font-family: "Noto Sans Mono", monospace;
+  background-color: var(--light-gray);
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 16px;
+}
+.about-text{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--dark-gray);
+}
+.about-text h1{
+  font-size: 16px;
+}
+.about-text a{
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--dark-gray);
+}
+
+.small-width-description {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .app {
+    flex-direction: column;
+  }
+  .diagram {
+    width: 90%;
+    text-align: center;
+  }
+  .panel {
+    display: none;
+  }
+  .small-width-description {
+    padding-top: 48px;
+    display: flex;
+    font-size: 16px;
+    color: var(--accent);
+  }
 }

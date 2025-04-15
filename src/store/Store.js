@@ -3,11 +3,15 @@ import { create } from 'zustand'
 const useStore = create((set) => ({
     file: null,
     diagramObject: null,
-    width: 800,
-    height: 600,
-    diagramRadius: 13,
+    diagramWidth: null,
+    diagramHeight: null,
+    diagramRadius: 60,
     groupRadius: 30,
-    pointRadius: 16,
+    pointRadius: 70,
+    canvasCenterX: null,
+    canvasCenterY: null,
+    saveBtnHover: false,
+    fileTooltipBtnHover: false,
 
     setRangeInput(parameter, number, min, max){
         switch(number){
@@ -24,9 +28,27 @@ const useStore = create((set) => ({
     setFile(filesList){
         set({ file: filesList[0]});
     },
-    setDiagramObject(object){
-        set({ diagramObject: object});
-    }
+    setDiagramObject(obj){
+        set({ diagramObject: obj});
+    },
+    setDiagramWidth(num){
+        set({ diagramWidth: num});
+    },
+    setDiagramHeight(num){
+        set({ diagramHeight: num});
+    },
+    setCanvasCenterX(num){
+        set({ canvasCenterX: num});
+    },
+    setCanvasCenterY(num){
+        set({ canvasCenterY: num});
+    },
+    setSaveBtnHover(bool){
+        set({ saveBtnHover: bool});
+    },
+    setFileTooltipBtnHover(bool){
+        set({ fileTooltipBtnHover: bool});
+    },
 }))
 
 export default useStore

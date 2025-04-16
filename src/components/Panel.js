@@ -80,7 +80,7 @@ export const Panel = () => {
                     <h2>Browse file in .csv format</h2>
                     <div
                         className='file-info-btn'
-                        onClick={()=>{handleFileTooltipBtn(!state.fileTooltipBtnHover)}}
+                        onClick={(e)=>{handleFileTooltipBtn(!state.fileTooltipBtnHover)}}
                     >i
                     </div>
                     <FileTooltip/>

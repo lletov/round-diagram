@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from 'react';
+import { RefObject, useRef, useEffect } from 'react';
 
 export const useClickOutside = (
   ref,
@@ -19,3 +19,5 @@ export const useClickOutside = (
     };
   }, [ref, handleOnClickOutside]);
 }
+
+

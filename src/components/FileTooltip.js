@@ -20,9 +20,9 @@ export const FileTooltip = () => {
         <div 
             ref={tooltipRef}
             className='panel file-info-tooltip' 
-            style={{visibility: state.fileTooltipBtnHover === true 
-                ? 'visible' 
-                : 'hidden'
+            style={{display: state.fileTooltipBtnHover === true 
+                ? 'block' 
+                : 'none'
             }}
         >
             <div className='panel-block-header'>

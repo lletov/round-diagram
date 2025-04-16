@@ -12,6 +12,7 @@ const useStore = create((set) => ({
     canvasCenterY: null,
     saveBtnHover: false,
     fileTooltipBtnHover: false,
+    loginFormHover: false,
 
     setRangeInput(parameter, number, min, max){
         switch(number){
@@ -48,6 +49,9 @@ const useStore = create((set) => ({
     },
     setFileTooltipBtnHover(bool){
         set({ fileTooltipBtnHover: bool});
+    },
+    setLoginFormHover(bool){
+        set({ loginFormHover: bool});
     },
 }))
 

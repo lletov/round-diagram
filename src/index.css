@@ -113,7 +113,7 @@ table {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
 }
 
 .panel-header-links .a {
@@ -343,6 +343,15 @@ table {
 
 .small-width-description {
   display: none;
+}
+
+.login-form{
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 150%;
+  max-height: 50vh;
+  z-index: 10;
 }
 
 @media (max-width: 800px) {

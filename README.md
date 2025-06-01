@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+The Round Diagram project offers a powerful and user-friendly interface for visualizing complex data relationships in a circular (pie-like) format. Built with React and D3.js, it enables users to create highly interactive, dynamic diagrams that elegantly represent hierarchical or interconnected data. The application leverages the precision of D3's data-driven rendering with the flexibility of React's component architecture, resulting in responsive, customizable visualizations ideal for analytical, educational, and presentation purposes.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📌 Live Demo
 
-## Available Scripts
+### Try it here: [Round Diagram Demo](https://lletov.github.io/round-diagram/)
 
-In the project directory, you can run:
+## User Workflow & Interaction Flow
 
-### `npm start`
+1. **Accessing the Application**\
+The app is accessed via a standard web browser with no need for local installation. This is possible because the app is a client-side Single Page Application (SPA) built with React, meaning the entire UI and logic run within the browser after the initial page load.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Data Input: Uploading CSV Files**\
+Users provide data to visualize by uploading CSV files through a file input control. The app uses JavaScript to parse the CSV into usable data structures (arrays/objects) in memory without requiring backend processing, keeping the operation fast and private.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Data Processing & Visualization**\
+Once the CSV is parsed, the data is fed into D3.js-based components, which dynamically generate scalable vector graphics (SVG) representing the circular diagram.
+D3 handles calculations for positioning, arcs, labels, and interactive behaviors like tooltips or highlighting. This all happens client-side for smooth and responsive user experience.
 
-### `npm test`
+4. **Interactivity & Customization**\
+Users can interact with diagram elements — such as additional UI controls on the panel enable live customization of the diagram’s sizes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. **Performance Considerations**\
+Because all processing is client-side, performance depends on the user’s device and browser capabilities. React’s efficient DOM updates and D3’s optimized rendering minimize lag even for moderately complex datasets.
 
-### `npm run build`
+6. **Saving & Exporting**\
+Some implementations may offer exporting the current diagram as SVG or PNG images or saving the visualization configuration for later reload.
+User can save result by making screenshot on save button click (the area will highlight for better visualization before).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## File structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application expects a CSV file that defines data nodes and their relationships (connections) in a circular layout. Each row represents a node with metadata and optionally lists other nodes it is connected to.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+CSV example (in .csv file [here](src/data.csv))
+```
+Title,Point,Group,Contacts
+Point 1,point1,group1,"point2"
+Point 2,point2,group2,""
+Point 3,point3,group3,""
+Point 4,point4,group3,"point3; point5"
+Point 5,point5,group4,""
+```
 
-### `npm run eject`
+Explanation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Row 1 (Point 1) connects to point2, indicating a relationship.
+- Row 4 (Point 4) connects to point3 and point5, indicating multiple links.
+- Other rows have empty Contacts, meaning they have no outward links but may still be targets of connections from others.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ Notes
+- Delimiter: Comma (,), with Contacts values wrapped in quotes if they include semicolons.
+- Contacts Format: Use ; to separate multiple contact Point values.
+- Uniqueness: Point values must be unique and match across the file for relationships to resolve.
+- Optional Fields: Only Contacts may be empty. All other fields are required for each node.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The Round Diagram supports one level of nesting in its data hierarchy. This constraint affects how you organize your data into groups and points.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+✅ Supported
 
-## Learn More
+    Points only: A flat structure where each node is a point with optional connections.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    Points grouped by one-level categories: Each point belongs to a single group, and the diagram clusters points by these groups.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+❌ Not Supported
 
-### Code Splitting
+    Groups within groups: Multi-level or hierarchical group nesting (e.g., subgroups inside groups) is not supported.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    Deep trees or multilevel taxonomies: The structure should remain flat beyond the group level.
 
-### Analyzing the Bundle Size
+## Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Interactive Diagrams**: Users can interact with diagrams to explore data relationships.
+- **Dynamic Data Binding**: Easily bind data to diagram elements for real-time updates.
+- **Customizable Styles**: Adjust diagram sizes through customizable styles.
+- **Data Import**: Import data from CSV files to generate diagrams.
 
-### Making a Progressive Web App
+## Technology Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Frontend**: React, D3.js
+- **Styling**: CSS
+- **Data Handling**: CSV parsing
 
-### Advanced Configuration
+## 💻 Responsiveness & environment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The Round Diagram app is primarily designed and optimized for use on desktop devices.
 
-### Deployment
+| Feature / Behavior             | < 800 px (Mobile) | > 800 px (Desktop) |
+|-------------------------------|-------------------|---------------------|
+| App start page                | ✅                | ✅                  |
+| Diagram working with          | ❌                | ✅                  |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Use Cases
 
-### `npm run build` fails to minify
+- Visual summaries on dashboards
+- Simple data breakdowns in web UIs
+- Infographics or visual reports
+- Educational tools or portfolio demos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Contact
+
+Feel free to connect with me:
+- **GitHub:** [lletov](https://github.com/lletov)
+
+---
+
+⭐ If you like this project, don't forget to star the repository!

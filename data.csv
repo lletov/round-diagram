@@ -1,7 +1,6 @@
 Title,Point,Group,Contacts
-Point 1,point1,group1,"point2; point4"
-Point 2,point2,group1,""
-Point 3,point3,group2,"point6"
-Point 4,point4,group2,""
-Point 5,point5,group3,""
-Point 6,point6,group3,""
+Point 1,point1,group1,"point2"
+Point 2,point2,group2,""
+Point 3,point3,group3,""
+Point 4,point4,group3,"point3; point5"
+Point 5,point5,group4,""

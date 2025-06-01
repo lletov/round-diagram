@@ -30,7 +30,7 @@ User can save result by making screenshot on save button click (the area will hi
 
 The application expects a CSV file that defines data nodes and their relationships (connections) in a circular layout. Each row represents a node with metadata and optionally lists other nodes it is connected to.
 
-CSV example (in .csv file [here](src/data.csv))
+CSV example (in .csv file [here](data.csv))
 ```
 Title,Point,Group,Contacts
 Point 1,point1,group1,"point2"

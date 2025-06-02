@@ -1,4 +1,5 @@
-![banner-round-diagram](https://github.com/user-attachments/assets/8cdf6827-b64d-4722-9e55-39a2ef08ce5b)
+![MacBook Air - 13](https://github.com/user-attachments/assets/c76a9a8d-7035-47e1-9b45-08e5f49cffa7)
+
 
 The Round Diagram project offers a powerful and user-friendly interface for visualizing complex data relationships in a circular (pie-like) format. Built with React and D3.js, it enables users to create highly interactive, dynamic diagrams that elegantly represent hierarchical or interconnected data. The application leverages the precision of D3's data-driven rendering with the flexibility of React's component architecture, resulting in responsive, customizable visualizations ideal for analytical, educational, and presentation purposes.
 

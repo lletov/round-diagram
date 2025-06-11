@@ -11,7 +11,7 @@ The Round Diagram project offers a powerful and user-friendly interface for visu
 The app is accessed via a standard web browser with no need for local installation. This is possible because the app is a client-side Single Page Application (SPA) built with React, meaning the entire UI and logic run within the browser after the initial page load.
 
 2. **Data Input: Uploading CSV Files**\
-Users provide data to visualize by uploading CSV files through a file input control. The app uses JavaScript to parse the CSV into usable data structures (arrays/objects) in memory without requiring backend processing, keeping the operation fast and private.
+Users provide data to visualize by uploading CSV files through a file input control. The app uses JavaScript to parse the CSV into usable data structures (arrays/objects) in memory without requiring backend processing, keeping the operation fast and private. **File should have at least one nested points group.**
 
 3. **Data Processing & Visualization**\
 Once the CSV is parsed, the data is fed into D3.js-based components, which dynamically generate scalable vector graphics (SVG) representing the circular diagram.

@@ -27,7 +27,7 @@ export const FileTooltip = () => {
         >
             <div className='panel-block-header'>
                 <h1>Tooltip</h1>
-                <h2>Here the file structure sample is shown. Make your files with the same structure. You can copy it & paste in text editor, or download same sample, edit as you need with your points and connections, save as .csv file, upload here with file uploader and see the result.</h2>
+                <h2>Here the file structure sample is shown. Make your files with the same structure. You can copy it & paste in text editor, or download same sample, edit as you need with your points and connections, save as .csv file, upload here with file uploader and see the result. File should have at least one nested points group.</h2>
             </div>
             <FileSample/>
         </div>

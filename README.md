@@ -39,6 +39,7 @@ Point 2,point2,group2,""
 Point 3,point3,group3,""
 Point 4,point4,group3,"point3; point5"
 Point 5,point5,group4,""
+Point 6,point6,group4,""
 ```
 
 Explanation

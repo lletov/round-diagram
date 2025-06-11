@@ -32,6 +32,7 @@ export default function FileSample() {
         Point 3,point3,group3,""<br/>
         Point 4,point4,group3,"point3; point5"<br/>
         Point 5,point5,group4,""<br/>
+        Point 6,point6,group4,""<br/>
         </div>
     </div>
   )

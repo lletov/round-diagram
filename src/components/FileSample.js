@@ -20,7 +20,7 @@ export default function FileSample() {
             <h1>File sample</h1>
             <div className='file-panel-header'>
               <button className='btn-s' onClick={handleClick}>{btnText}</button> 
-              <a href="https://lletov.github.io/round-diagram/data.csv" download>
+              <a href="/round-diagram/data.csv" download>
                 <button className='btn-s'>Download</button> 
               </a>
             </div>
